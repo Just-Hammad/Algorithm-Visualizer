@@ -80,7 +80,6 @@ export default function Menu() {
       setLocalStorage(LOCAL_STORAGE_KEY, "#"); // Reset the page to home
       const selected = document.querySelector(`li a[page="${page}"]`);
       if (selected) {
-        selected.parentNode.style.transition = "none";
         selected.parentNode.classList.add("menu", "active", "selected");
 
         setTimeout(() => {
