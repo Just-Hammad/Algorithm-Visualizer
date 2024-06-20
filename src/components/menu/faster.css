@@ -1,0 +1,111 @@
+.menu {
+    position: relative;
+    width: 260px;
+    height: 260px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .menu li {
+    position: absolute;
+    left: 0;
+    list-style: none;
+    transform: rotate(90deg) translateX(100px);
+    transform-origin: 130px;
+    transition: transform 0.5s ease-in-out; /* Only apply transition to transform property */
+  }
+  
+  .menu.active li {
+    transform: rotate(calc(360deg / 8 * var(--i)));
+  }
+  
+  .menu a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    text-decoration: none;
+    font-size: 22px;
+    border-radius: 50%;
+    transform: rotate(calc(360deg / -8 * var(--i)));
+    color: transparent;
+    filter: drop-shadow(0 0 2px var(--clr));
+    transition: color 0.5s; /* Only apply transition to color property */
+  }
+  
+  .menu.active a {
+    cursor: pointer;
+    color: var(--clr);
+    fill: "#161616"
+  }
+  
+  .menu a::before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--clr);
+    transform: rotate(calc(90deg * var(--i))) translate(0, 25px);
+    transition: background-color 0.5s; /* Only apply transition to background-color property */
+  }
+  
+  .menu.active a::before {
+    width: 50px;
+    height: 50px;
+    background: #161616;
+    border: 2px solid var(--clr);
+    transform: rotate(0deg);
+    border-radius: 10px;
+    filter: drop-shadow(0 0 5px var(--clr));
+  }
+  
+  .menu.active li:hover a::before {
+    background: var(--clr);
+  }
+  
+  .menu.active li:hover a ion-icon {
+    color: #161616;
+    animation: rotate 1s ease-in-out;
+  }
+  
+  .menuToggle {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 32px;
+    transition: transform 1.5s; /* Only apply transition to transform property */
+  }
+  
+  .menu.active .menuToggle {
+    transform: rotate(315deg);
+  }
+  
+  .menu.active.selected {
+    transform: rotate(360deg) translateX(-48vw) rotate(calc(360deg / 8 * var(--i)));
+  }
+  
+  .menu.active.selected a {
+    color: #000;
+    display: flex;
+    z-index: 100;
+    border-radius: 50%;
+    cursor: pointer;
+    filter: drop-shadow(0 0 2px var(--clr)) drop-shadow(0 0 2px var(--clr));
+    font-size: 16px;
+  }
+  
+  .menu.active.selected a::before {
+    width: 1px;
+    height: 1px;
+  }
+  
