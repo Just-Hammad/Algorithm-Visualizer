@@ -1,0 +1,99 @@
+
+/* a delay css property is also in mazevisuliszer.jsx file */
+
+body {
+  background: #161616;
+}
+
+.maze-grid-container {
+  display: grid;
+  height: 100vh;
+  grid-template-columns: repeat(9, 1fr);
+  background-color: #161616;
+}
+
+.maze-grid-container > div {
+  position: absolute;
+  height: 100vh;
+  border : 1px solid #f00;
+  position: relative;
+}
+
+.maze-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.maze {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(278px, 1fr));
+  grid-template-rows: repeat(auto-fit, minmax(278px, 1fr));
+  width: 100%;
+  height: 100%;
+}
+
+.maze-row {
+  display: flex;
+}
+
+.maze-cell {
+  width: 10px;
+  height: 10px;
+  border: 1px solid #000;
+}
+
+.maze-cell.wall {
+  background-color: #fff;
+  box-shadow: 0 0 5px #000;
+}
+
+.maze-cell.path {
+  background-color: #000;
+}
+
+.maze-cell.start {
+  background-color: green;
+  filter: drop-shadow(0 0 10px blue);
+  border: none;
+}
+
+.maze-cell.end {
+  background-color: red;
+  border: none;
+  filter: drop-shadow(0 0 10px blue);
+}
+
+.maze-cell.neighbour {
+  background-color: blue;
+
+}
+
+.maze-cell.current {
+  background-color: yellow;
+  animation: maze-pop 700ms alternate;
+}
+
+.heading {
+  font-size: 2rem;
+  color: #fff;
+  margin: 1rem;
+}
+
+.maze-grid {
+  display: grid;
+  grid-template-columns: repeat(50, 1fr);
+  grid-template-rows: repeat(50, 1fr);
+  gap: 1px;
+}
+
+@keyframes maze-pop {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
