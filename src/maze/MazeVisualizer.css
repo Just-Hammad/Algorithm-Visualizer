@@ -89,6 +89,18 @@ body {
   gap: 1px;
 }
 
+.footer {
+  position: absolute;
+  bottom: 0%;
+  left: 90%;
+  font-family: 'VT323', monospace;
+  color: #00ff00;
+  font-size: 0.7em;
+  text-align: center;
+  margin: 20px 0;
+  z-index: 100;
+}
+
 @keyframes maze-pop {
   0% {
     transform: scale(0);
