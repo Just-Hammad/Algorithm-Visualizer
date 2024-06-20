@@ -11,6 +11,9 @@ function App() {
       <div className='heading'>
         Algorithm Visualizer
       </div>
+      <div className='footer'>
+        Just_Hammad &copy; 2024
+      </div>
       <Menu />
     </>
   )
