@@ -74,7 +74,7 @@ export default function Menu() {
 
   // Animation for coming back to home page from a selected page
   useEffect(() => {
-    const page = "/maze/";
+    const page = getLocalStorage(LOCAL_STORAGE_KEY);
     if (page === "#") return; // Don't animate if the page is already home
     if (page) {
       setLocalStorage(LOCAL_STORAGE_KEY, "#"); // Reset the page to home
