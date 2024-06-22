@@ -120,7 +120,7 @@ export default function Menu() {
           <a page="#"><ion-icon name="game-controller-outline"></ion-icon></a>
         </li>
         <li style={{ "--i": 6, "--clr": "#a529ff" }}>
-          <a page="#"><ion-icon src={graph}></ion-icon></a>
+          <a page="#"><ion-icon style={{height: "32px", width:"32px"}}src={graph}></ion-icon></a>
         </li>
         <li style={{ "--i": 7, "--clr": "#01bdab" }}>
           <a page="#"><ion-icon name="videocam-outline"></ion-icon></a>
