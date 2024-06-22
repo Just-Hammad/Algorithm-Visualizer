@@ -4,7 +4,7 @@ import { useSound } from "../useSound";
 import open from "../../../public/audio/open.mp3";
 import beep from "../../../public/audio/beep.mp3";
 
-import gameoflife from "../../../public/svg/game-of-life.svg";
+import gameoflife from "../../../public/svg/gameoflife.svg";
 import bucket from "../../../public/svg/bucket.svg";
 import maze from "../../../public/svg/maze.svg";
 import chess from "../../../public/svg/chess.svg";
