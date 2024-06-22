@@ -54,6 +54,8 @@
     transition-delay: 0.5s;
     filter: drop-shadow(0 0 2px var(--clr));
   }
+
+
   .menu.active a {
     cursor: pointer;
     color: var(--clr);
