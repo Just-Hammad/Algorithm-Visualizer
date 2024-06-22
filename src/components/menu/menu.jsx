@@ -4,6 +4,7 @@ import { useSound } from "../useSound";
 import open from "../../../public/audio/open.mp3";
 import beep from "../../../public/audio/beep.mp3";
 
+import graph from "../../../public/svg/graph.svg";
 import bucket from "../../../public/svg/bucket.svg";
 import maze from "../../../public/svg/maze.svg";
 import chess from "../../../public/svg/chess.svg";
@@ -119,7 +120,7 @@ export default function Menu() {
           <a page="#"><ion-icon name="game-controller-outline"></ion-icon></a>
         </li>
         <li style={{ "--i": 6, "--clr": "#a529ff" }}>
-          <a page="#"><ion-icon name="person-outline"></ion-icon></a>
+          <a page="#"><ion-icon src={graph}></ion-icon></a>
         </li>
         <li style={{ "--i": 7, "--clr": "#01bdab" }}>
           <a page="#"><ion-icon name="videocam-outline"></ion-icon></a>
