@@ -64,6 +64,7 @@ export default function Menu() {
 
     setTimeout(() => {
       document.querySelector(".soon").classList.remove("active");
+      e.classList.remove("menu", "active", "selected");
     }, 2050);
   };
 

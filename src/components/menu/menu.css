@@ -3,6 +3,14 @@
   margin: 0;
 }
 
+body {
+  display: flex;
+  background-color: #161616;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
 .soon {
   position: absolute;
   top: 50%;
@@ -13,11 +21,10 @@
   transition: 2s;
   font-family: 'VT323', monospace;
 }
-
 .soon.active {
   color: #00ff00;
   text-shadow: 0 0 2px #00ff00, 0 0 4px #00ff00, 0 0 5px #00ff00
-}
+                }
 
 .menu {
   position: relative;
@@ -27,21 +34,18 @@
   align-items: center;
   justify-content: center;
 }
-
 .menu li {
   position: absolute;
   left: 0;
   list-style: none;
-  transform: rotate(90deg) translateX(100px);
+  transform:rotate(90deg) translateX(100px);
   transform-origin: 130px;
   transition: 0.5s;
   transition-delay: calc(0.1s * var(--i));
 }
-
 .menu.active li {
   transform: rotate(calc(360deg / 8 * var(--i)));
 }
-
 .menu a {
   display: flex;
   align-items: center;
@@ -63,7 +67,6 @@
   cursor: pointer;
   color: var(--clr);
 }
-
 .menu a::before {
   content: "";
   position: absolute;
@@ -74,7 +77,6 @@
   transform: rotate(calc(90deg * var(--i))) translate(0, 25px);
   transition: width 0.5s 0.5s, height 0.5s 1s, transform 0.5s 1.5s;
 }
-
 .menu.active a::before {
   width: 50px;
   height: 50px;
@@ -87,15 +89,13 @@
   filter: drop-shadow(0 0 5px var(--clr));
   rotate: 135deg;
 }
-
 .menu.active li:hover a::before {
   background: var(--clr);
 }
-
 .menu.active li:hover a ion-icon {
   color: #161616;
   animation: rotate 1s ease-in-out;
-}
+  }
 
 .menuToggle {
   position: absolute;
@@ -111,7 +111,6 @@
   font-size: 32px;
   transition: 1.5s;
 }
-
 .menu.active .menuToggle {
   transform: rotate(315deg);
 }
@@ -120,9 +119,9 @@
   transform: rotate(360deg) translateX(-48vw) rotate(calc(360deg / 8 * var(--i)));
   transition: transform 1s;
   transition-delay: 1s 0.5s;
-}
+  }
 
-.menu.active.selected a {
+.menu.active.selected a{
   color: #000;
   display: flex;
   z-index: 100;
@@ -137,7 +136,7 @@
 .menu.active.selected a::before {
   width: 1px;
   height: 1px;
-  transition-delay: 1.5s;
+transition-delay: 1.5s;
 }
 
 
@@ -146,12 +145,11 @@
   0% {
     transform: rotate(0deg);
   }
-
   50% {
     transform: rotate(60deg);
   }
-
   100% {
     transform: rotate(0deg);
   }
 }
+

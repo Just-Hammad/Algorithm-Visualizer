@@ -25,9 +25,9 @@ export default function MazeMenu() {
     openSound();
 
     setTimeout(() => {
-    window.location.href = page;
+      window.location.href = page;
     }
-    , 1300);
+      , 1300);
   }
 
   useEffect(() => {
@@ -57,7 +57,9 @@ export default function MazeMenu() {
   return (
     <>
       <ul id="maze-menu" className="maze-menu">
-        <div onClick={handleMenuToggle} className="maze-menuToggle"><ion-icon src={maze}></ion-icon></div>
+        <div onClick={handleMenuToggle} className="maze-menuToggle">
+          <ion-icon src={maze}></ion-icon>
+        </div>
         <li style={{ "--i": 0, "--clr": "#ff2972" }}>
           <a page="/">
             <ion-icon name="home-outline"></ion-icon>
@@ -75,12 +77,12 @@ export default function MazeMenu() {
         </li>
         <li style={{ "--i": 3, "--clr": "#fe00f1" }}>
           <a page="#">
-            <ion-icon name="key-outline"></ion-icon>
+            <ion-icon name="map-outline"></ion-icon>
           </a>
         </li>
         <li style={{ "--i": 4, "--clr": "#01bdab" }}>
           <a page="#">
-            <ion-icon name="videocam-outline"></ion-icon>
+            <ion-icon name="dice-outline"></ion-icon>
           </a>
         </li>
       </ul>

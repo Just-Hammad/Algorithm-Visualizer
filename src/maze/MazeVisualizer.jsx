@@ -11,7 +11,7 @@ const MazeVisualizer = () => {
   const controllerRef = useRef(null);
 
   const [message, setMessage] = useState('');
-  const cellSize = 278 / Math.max(width, height);
+  const cellSize = 500 / Math.max(width, height); // 278
 
   const handleStart = () => {
 
@@ -78,11 +78,11 @@ const MazeVisualizer = () => {
         <MazeMenu className="maze-menu" />
       </div>
       <div className="maze-container p-5" style={{ gridColumn: 'span 5' }}>
-        <div className='grid grid-rows-2 h-full w-full'>
+        <div className='grid grid-rows-7 h-full w-full'>
           {/* First Row */}
-          <div className='grid grid-cols-12'>
+          <div className='grid grid-cols-12 row-span-6'>
 
-            <div className='col-span-5 border border-red-800 shadow-md shadow-green-400'>
+            <div className='col-span-9 border border-red-800 shadow-md shadow-green-400'>
               {maze.map((row, rowIndex) => (
                 <div key={rowIndex} className="maze-row">
                   {row.map((cell, cellIndex) => (
@@ -96,26 +96,26 @@ const MazeVisualizer = () => {
               ))}
             </div>
 
-            <div className=' col-span-7 '>
+            <div className=' col-span-3 '>
               <div className='grid gap-3 items-center justify-end p-6'>
                 <div className='flex'>
-                  <p className='maze-cell start p-2 m-2'></p>
+                  <p className='maze-cell start p-0.5 m-2'></p>
                   <p className='p-0.5 text-green-100 font-bold'>Start</p>
                 </div>
                 <div className='flex'>
-                  <p className='maze-cell end p-2 m-2'></p>
+                  <p className='maze-cell end p-0.5 m-2'></p>
                   <p className='p-0.5 text-green-100 font-bold'>End</p>
                 </div>
                 <div className='flex'>
-                  <p className='maze-cell neighbour p-2 m-2'></p>
+                  <p className='maze-cell neighbour p-0.5 m-2'></p>
                   <p className='p-0.5 text-green-100 font-bold'>Neighbour</p>
                 </div>
                 <div className='flex'>
-                  <p className='maze-cell current p-2 m-2'></p>
+                  <p className='maze-cell current p-0.5 m-2'></p>
                   <p className='p-0.5 text-green-100 font-bold'>Current</p>
                 </div>
                 <div className='flex'>
-                  <p className='maze-cell wall p-2 m-2'></p>
+                  <p className='maze-cell wall p-0.5 m-2'></p>
                   <p className='p-0.5 text-green-100 font-bold'>Wall</p>
                 </div>       
               </div>
