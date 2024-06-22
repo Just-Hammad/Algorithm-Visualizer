@@ -1,146 +1,157 @@
 * {
-    padding: 0;
-    margin: 0;
-  }
+  padding: 0;
+  margin: 0;
+}
 
-  .soon {
-    position: absolute;
-    top: 50%;
-    left: 35%;
-    font-size: 2em;
-    transform: translate(-100%, -50%);
-    color: #161616;
-    transition: 2s;
-    font-family: 'VT323', monospace;
-  }
-  .soon.active {
-    color: #00ff00;
-    text-shadow: 0 0 2px #00ff00, 0 0 4px #00ff00, 0 0 5px #00ff00
-                  }
+.soon {
+  position: absolute;
+  top: 50%;
+  left: 35%;
+  font-size: 2em;
+  transform: translate(-100%, -50%);
+  color: #161616;
+  transition: 2s;
+  font-family: 'VT323', monospace;
+}
 
-  .menu {
-    position: relative;
-    width: 260px;
-    height: 260px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all;
-  }
-  .menu li {
-    position: absolute;
-    left: 0;
-    list-style: none;
-    transform:rotate(90deg) translateX(100px);
-    transform-origin: 130px;
-    transition: 0.5s;
-    transition-delay: calc(0.1s * var(--i));
-  }
-  .menu.active li {
-    transform: rotate(calc(360deg / 8 * var(--i)));
-  }
-  .menu a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 60px;
-    height: 60px;
-    text-decoration: none;
-    font-size: 22px;
-    border-radius: 50%;
-    transform: rotate(calc(360deg / -8 * var(--i)));
-    transition: 1s;
-    color: transparent;
-    transition-delay: 0.5s;
-    filter: drop-shadow(0 0 2px var(--clr));
-  }
+.soon.active {
+  color: #00ff00;
+  text-shadow: 0 0 2px #00ff00, 0 0 4px #00ff00, 0 0 5px #00ff00
+}
+
+.menu {
+  position: relative;
+  width: 260px;
+  height: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu li {
+  position: absolute;
+  left: 0;
+  list-style: none;
+  transform: rotate(90deg) translateX(100px);
+  transform-origin: 130px;
+  transition: 0.5s;
+  transition-delay: calc(0.1s * var(--i));
+}
+
+.menu.active li {
+  transform: rotate(calc(360deg / 8 * var(--i)));
+}
+
+.menu a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  text-decoration: none;
+  font-size: 22px;
+  border-radius: 50%;
+  transform: rotate(calc(360deg / -8 * var(--i)));
+  transition: 1s;
+  color: transparent;
+  transition-delay: 0.5s;
+  filter: drop-shadow(0 0 2px var(--clr));
+}
 
 
-  .menu.active a {
-    cursor: pointer;
-    color: var(--clr);
-    fill: "#161616"
-  }
-  .menu a::before {
-    content: "";
-    position: absolute;
-    width: 20px;
-    height: 2px;
-    border-radius: 2px;
-    background: var(--clr);
-    transform: rotate(calc(90deg * var(--i))) translate(0, 25px);
-    transition: width 0.5s 0.5s, height 0.5s 1s, transform 0.5s 1.5s;
-  }
-  .menu.active a::before {
-    width: 50px;
-    height: 50px;
-    background: #161616;
-    border: 2px solid var(--clr);
-    transform: rotate(0deg);
-    transition: transform 0.5s, height 0.5s, width 0.5s;
-    transition-delay: 0.5s, 1.5s, 1.5s;
-    border-radius: 10px;
-    filter: drop-shadow(0 0 5px var(--clr));
-    rotate: 135deg;
-  }
-  .menu.active li:hover a::before {
-    background: var(--clr);
-  }
-  .menu.active li:hover a ion-icon {
-    color: #161616;
-    animation: rotate 1s ease-in-out;
-    }
+.menu.active a {
+  cursor: pointer;
+  color: var(--clr);
+}
 
-  .menuToggle {
-    position: absolute;
-    width: 60px;
-    height: 60px;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 100;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 32px;
-    transition: 1.5s;
-  }
-  .menu.active .menuToggle {
-    transform: rotate(315deg);
-  }
+.menu a::before {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--clr);
+  transform: rotate(calc(90deg * var(--i))) translate(0, 25px);
+  transition: width 0.5s 0.5s, height 0.5s 1s, transform 0.5s 1.5s;
+}
 
-  .menu.active.selected {
-    transform: rotate(360deg) translateX(-48vw) rotate(calc(360deg / 8 * var(--i)));
-    transition: transform 1s;
-    transition-delay: 1s 0.5s;
-    }
+.menu.active a::before {
+  width: 50px;
+  height: 50px;
+  background: #161616;
+  border: 2px solid var(--clr);
+  transform: rotate(0deg);
+  transition: transform 0.5s, height 0.5s, width 0.5s;
+  transition-delay: 0.5s, 1.5s, 1s;
+  border-radius: 10px;
+  filter: drop-shadow(0 0 5px var(--clr));
+  rotate: 135deg;
+}
 
-  .menu.active.selected a{
-    color: #000;
-    display: flex;
-    z-index: 100;
-    border-radius: 50%;
-    cursor: pointer;
-    filter: drop-shadow(0 0 2px var(--clr)) drop-shadow(0 0 2px var(--clr));
-    transition: 1.5s;
-    font-size: 16px;
-    transition-delay: 1s;
-  }
+.menu.active li:hover a::before {
+  background: var(--clr);
+}
 
-  .menu.active.selected a::before {
-    width: 1px;
-    height: 1px;
+.menu.active li:hover a ion-icon {
+  color: #161616;
+  animation: rotate 1s ease-in-out;
+}
+
+.menuToggle {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 32px;
+  transition: 1.5s;
+}
+
+.menu.active .menuToggle {
+  transform: rotate(315deg);
+}
+
+.menu.active.selected {
+  transform: rotate(360deg) translateX(-48vw) rotate(calc(360deg / 8 * var(--i)));
+  transition: transform 1s;
+  transition-delay: 1s 0.5s;
+}
+
+.menu.active.selected a {
+  color: #000;
+  display: flex;
+  z-index: 100;
+  border-radius: 50%;
+  cursor: pointer;
+  filter: drop-shadow(0 0 2px var(--clr)) drop-shadow(0 0 2px var(--clr));
+  transition: 1.5s;
+  font-size: 16px;
+  transition-delay: 1s;
+}
+
+.menu.active.selected a::before {
+  width: 1px;
+  height: 1px;
   transition-delay: 1.5s;
 }
 
-  
 
-  @keyframes rotate {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
   }
 
+  50% {
+    transform: rotate(60deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
