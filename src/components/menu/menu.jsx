@@ -111,7 +111,7 @@ export default function Menu() {
           <a page="#"><ion-icon src={chess}></ion-icon></a>
         </li>
         <li style={{ "--i": 3, "--clr": "#fe00f1" }}>
-          <a page="#"><ion-icon src={gameoflife}></ion-icon></a>
+          <a page="#"><ion-icon src={}></ion-icon></a>
         </li>
         <li style={{ "--i": 4, "--clr": "#00b0fe" }}>
           <a page="#"><ion-icon name="camera-outline"></ion-icon></a>
