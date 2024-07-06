@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import MazeMenu from './maze-menu';
+import { dijkstraAlgorithm } from './dijkstra';
 import { generateMaze } from './mazeGenerator';
 import './MazeVisualizer.css';
 
@@ -7,7 +8,7 @@ const MazeVisualizer = () => {
   const [width, setWidth] = useState(25);
   const [height, setHeight] = useState(25);
   const [delay, setDelay] = useState(100);
-  const [maze, setMaze] = useState([]);
+  const [maze, setMaze] = useState(Array.from({ length: height }, () => Array(width).fill()));
   const controllerRef = useRef(null);
 
   const [message, setMessage] = useState('');
@@ -34,12 +35,10 @@ const MazeVisualizer = () => {
     const controller = new AbortController();
     controllerRef.current = controller;
 
-    // Initialize the maze
-    setMaze(Array.from({ length: height }, () => Array(width).fill(1))); // Initialize all cells as walls
-
     const generate = async () => {
       try {
-        await generateMaze(width, height, setMaze, delay, controller.signal);
+        await generateMaze(width, height, setMaze, 0, controller.signal);
+        await dijkstraAlgorithm(maze, width, height, setMaze, delay, controller.signal);
       } catch (err) {
         if (err.name === 'AbortError') {
           console.log('Maze generation aborted');
