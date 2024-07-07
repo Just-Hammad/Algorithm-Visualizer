@@ -14,7 +14,7 @@ const MazeVisualizer = () => {
   const [message, setMessage] = useState('');
   const cellSize = 500 / Math.max(width, height); // 278
 
-  const handleStart = () => {
+  const handleStart = (e) => {
 
     if (width < 5 || height < 5 || width > 51 || height > 51) {
       setMessage('Width and height must be between 5 and 51');
@@ -37,8 +37,18 @@ const MazeVisualizer = () => {
 
     const generate = async () => {
       try {
-        await generateMaze(width, height, setMaze, 0, controller.signal);
-        await dijkstraAlgorithm(maze, width, height, setMaze, delay, controller.signal);
+        if (e.target.textContent === 'Generate') {
+          setMessage('Generating maze...');
+          await generateMaze(width, height, setMaze, 0, controller.signal);
+          setMessage('Maze generated');
+          return;
+        }
+        if (e.target.textContent === 'Find') {
+          setMessage('Finding path...');
+          await dijkstraAlgorithm(maze, width, height, setMaze, delay, controller.signal);
+          setMessage('Path found');
+          return;
+        }
       } catch (err) {
         if (err.name === 'AbortError') {
           console.log('Maze generation aborted');
@@ -70,7 +80,6 @@ const MazeVisualizer = () => {
   }
 
   return (
-
 
     <div className="maze-grid-container">
       <div style={{ gridColumn: 'span 2' }}>
@@ -125,7 +134,8 @@ const MazeVisualizer = () => {
         </div>
       </div>
       <div className="flex flex-col justify-center items-center" style={{ gridColumn: 'span 2' }}>
-        <button onClick={handleStart} className="bg-black text-green-400 px-4 py-2 rounded-md border border-green-400 hover:bg-green-400 hover:text-black transition duration-300">Start</button>
+        <button onClick={handleStart} className="bg-black text-green-400 px-4 py-2 rounded-md border border-green-400 hover:bg-green-400 hover:text-black transition duration-300">Generate</button>
+        <button onClick={handleStart} className="bg-black text-green-400 px-4 py-2 rounded-md border border-green-400 hover:bg-green-400 hover:text-black transition duration-300">Find</button>
         <input id='maze-width' onChange={(e) => setWidth(Number(e.target.value))} type='number' placeholder='Width' className='w-20 h-8 bg-black text-green-400 border border-green-400 rounded-md px-2 outline-none focus:border-green-600 focus:ring-1 focus:ring-green-600' />
         <input id='maze-height' onChange={(e) => setHeight(Number(e.target.value))} type='number' placeholder='Height' className='w-20 h-8 bg-black text-green-400 border border-green-400 rounded-md px-2 outline-none focus:border-green-600 focus:ring-1 focus:ring-green-600' />
         <input id='maze-delay' onChange={(e) => setDelay(Number(e.target.value))} type='number' placeholder='Delay' className='w-20 h-8 bg-black text-green-400 border border-green-400 rounded-md px-2 outline-none focus:border-green-600 focus:ring-1 focus:ring-green-600' />
