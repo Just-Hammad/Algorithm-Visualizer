@@ -5,6 +5,7 @@ import { generateMaze } from './mazeGenerator';
 import './MazeVisualizer.css';
 
 const MazeVisualizer = () => {
+  const [selected, setSelected] = useState(0);
   const [width, setWidth] = useState(25);
   const [height, setHeight] = useState(25);
   const [delay, setDelay] = useState(100);
@@ -13,6 +14,18 @@ const MazeVisualizer = () => {
 
   const [message, setMessage] = useState('');
   const cellSize = 500 / Math.max(width, height); // 278
+
+  const handleDraw = (rowIndex, cellIndex) => {
+    const newMaze = maze.map((row, rIdx) =>
+      row.map((cell, cIdx) => {
+        if (rIdx === rowIndex && cIdx === cellIndex) {
+          return selected;
+        }
+        return cell;
+      })
+    );
+    setMaze(newMaze);
+  };
 
   const handleStart = (e) => {
 
@@ -95,6 +108,7 @@ const MazeVisualizer = () => {
                 <div key={rowIndex} className="maze-row">
                   {row.map((cell, cellIndex) => (
                     <div
+                      onClick={() => {handleDraw(rowIndex, cellIndex)}}
                       key={cellIndex}
                       className={`maze-cell ${cellType(cell)}`}
                       style={{ width: cellSize, height: cellSize, transition: `all ${delay + 200}ms ease-in-out` }}
@@ -107,23 +121,23 @@ const MazeVisualizer = () => {
             <div className=' col-span-3 '>
               <div className='grid gap-3 items-center justify-end p-6'>
                 <div className='flex'>
-                  <p className='maze-cell start p-0.5 m-2'></p>
+                  <p onClick={() => {setSelected(-1)}} className='maze-cell start p-0.5 m-2'></p>
                   <p className='p-0.5 text-green-100 font-bold'>Start</p>
                 </div>
                 <div className='flex'>
-                  <p className='maze-cell end p-0.5 m-2'></p>
+                  <p onClick={() => {setSelected(-2)}} className='maze-cell end p-0.5 m-2'></p>
                   <p className='p-0.5 text-green-100 font-bold'>End</p>
                 </div>
                 <div className='flex'>
-                  <p className='maze-cell neighbour p-0.5 m-2'></p>
+                  <p onClick={() => {setSelected(2)}} className='maze-cell neighbour p-0.5 m-2'></p>
                   <p className='p-0.5 text-green-100 font-bold'>Neighbour</p>
                 </div>
                 <div className='flex'>
-                  <p className='maze-cell current p-0.5 m-2'></p>
+                  <p onClick={() => {setSelected(3)}} className='maze-cell current p-0.5 m-2'></p>
                   <p className='p-0.5 text-green-100 font-bold'>Current</p>
                 </div>
                 <div className='flex'>
-                  <p className='maze-cell wall p-0.5 m-2'></p>
+                  <p onClick={() => {setSelected(1)}} className='maze-cell wall p-0.5 m-2'></p>
                   <p className='p-0.5 text-green-100 font-bold'>Wall</p>
                 </div>       
               </div>
@@ -138,8 +152,15 @@ const MazeVisualizer = () => {
         <button onClick={handleStart} className="bg-black text-green-400 px-4 py-2 rounded-md border border-green-400 hover:bg-green-400 hover:text-black transition duration-300">Find</button>
         <input id='maze-width' onChange={(e) => setWidth(Number(e.target.value))} type='number' placeholder='Width' className='w-20 h-8 bg-black text-green-400 border border-green-400 rounded-md px-2 outline-none focus:border-green-600 focus:ring-1 focus:ring-green-600' />
         <input id='maze-height' onChange={(e) => setHeight(Number(e.target.value))} type='number' placeholder='Height' className='w-20 h-8 bg-black text-green-400 border border-green-400 rounded-md px-2 outline-none focus:border-green-600 focus:ring-1 focus:ring-green-600' />
-        <input id='maze-delay' onChange={(e) => setDelay(Number(e.target.value))} type='number' placeholder='Delay' className='w-20 h-8 bg-black text-green-400 border border-green-400 rounded-md px-2 outline-none focus:border-green-600 focus:ring-1 focus:ring-green-600' />
-        <p className=" text-green-400">{message}</p>
+        <input
+            id='maze-delay'
+            type='range'
+            min='0'
+            max='1000'
+            value={delay}
+            onChange={(e) => setDelay(Number(e.target.value))}
+            className='w-40 h-8 bg-black text-green-400 border border-green-400 rounded-md outline-none focus:border-green-600 focus:ring-1 focus:ring-green-600'
+          />        <p className=" text-green-400">{message}</p>
       </div>
     </div>
   );
