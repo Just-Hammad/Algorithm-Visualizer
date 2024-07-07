@@ -10,6 +10,8 @@ const MazeVisualizer = () => {
   const [height, setHeight] = useState(25);
   const [delay, setDelay] = useState(100);
   const [maze, setMaze] = useState(Array.from({ length: height }, () => Array(width).fill()));
+  const [start , setStart] = useState({x:1, y:1});
+  const [end , setEnd] = useState({x:width-2, y:height-2})
   const controllerRef = useRef(null);
 
   const [message, setMessage] = useState('');
@@ -18,6 +20,9 @@ const MazeVisualizer = () => {
   const handleDraw = (rowIndex, cellIndex) => {
     const newMaze = maze.map((row, rIdx) =>
       row.map((cell, cIdx) => {
+        if ((selected === -1 && cell === -1) || (selected === -2 && cell === -2)){
+          return 0;
+        }
         if (rIdx === rowIndex && cIdx === cellIndex) {
           return selected;
         }
@@ -58,7 +63,7 @@ const MazeVisualizer = () => {
         }
         if (e.target.textContent === 'Find') {
           setMessage('Finding path...');
-          await dijkstraAlgorithm(maze, width, height, setMaze, delay, controller.signal);
+          await dijkstraAlgorithm(maze, width, height, setMaze, delay, controller.signal, start, end);
           setMessage('Path found');
           return;
         }
